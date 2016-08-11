@@ -2365,6 +2365,14 @@ void Commands::processMCode(GCode *com) {
 		}
 break;
 #endif
+		case 920:
+		       // S I2C-port is needed, else ignore
+		       if(com->hasString()) {
+		          FSR::i2cSendString( com->text);
+		       } else {
+		    	  Com::printF(PSTR("no FSR Board command found"));
+		       }
+		       break;
 		case 999: // Stop fatal error take down
 			if(com->hasS())
 				GCode::fatalError(PSTR("Testing fatal error"));

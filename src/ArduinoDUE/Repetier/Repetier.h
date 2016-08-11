@@ -1013,3 +1013,5 @@ extern int debugWaitLoop;
 #endif
 
 #endif
+
+#include "FSR.h"
