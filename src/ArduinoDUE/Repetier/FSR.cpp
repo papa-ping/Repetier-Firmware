@@ -20,8 +20,14 @@
 #include "Repetier.h"
 #include "FSR.h"
 
+/**
+ * FSR-Glatzemann board firmware and links on https://github.com/Glatzemann/FsrBoardFirmware.
+ *
+ * The board listen default at address 77 all is G-Codes. And will get feedback over the i2c bus.
+ */
 void FSR::i2cSendString( char *gcode) {
 
+	// initialize i2c bus wor writing
     HAL::i2cStart(FSR_I2C_PORT  << 1 | I2C_WRITE);
 
     while (*gcode != 0) {
@@ -29,6 +35,22 @@ void FSR::i2cSendString( char *gcode) {
     }
     // Send a string termination
     HAL::i2cWrite(0);
+
+    HAL::i2cStop();
+
+    // Awaiting at least a 0-Byte for no feedback.
+    HAL::i2cStart(FSR_I2C_PORT  << 1 | I2C_READ);
+
+    uint8 c = HAL::i2cReadAck();
+
+    while(c != 0) {
+    	// Write out on Serial device
+    	HAL::serialWriteByte(c);
+
+    	// read next byte
+    	c = HAL::i2cReadNak();
+
+    }
 
     HAL::i2cStop();
 
