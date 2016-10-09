@@ -83,7 +83,7 @@
 #define EXT0_Y_OFFSET 0
 #define EXT0_Z_OFFSET 0
 #define EXT0_STEPS_PER_MM 145
-#define EXT0_TEMPSENSOR_TYPE 14
+#define EXT0_TEMPSENSOR_TYPE 1
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 #define EXT0_HEATER_PIN HEATER_0_PIN
 #define EXT0_STEP_PIN ORIG_E0_STEP_PIN
@@ -99,7 +99,7 @@
 #define EXT0_MAX_FEEDRATE 50
 #define EXT0_MAX_START_FEEDRATE 20
 #define EXT0_MAX_ACCELERATION 5000
-#define EXT0_HEAT_MANAGER 3
+#define EXT0_HEAT_MANAGER 1
 #define EXT0_WATCHPERIOD 1
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 230
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 40
@@ -115,7 +115,7 @@
 #define EXT0_SELECT_COMMANDS ""
 #define EXT0_DESELECT_COMMANDS ""
 #define EXT0_EXTRUDER_COOLER_PIN ORIG_FAN_PIN
-#define EXT0_EXTRUDER_COOLER_SPEED 255
+#define EXT0_EXTRUDER_COOLER_SPEED 200
 #define EXT0_DECOUPLE_TEST_PERIOD 12000
 #define EXT0_JAM_PIN -1
 #define EXT0_JAM_PULLUP 0
@@ -134,7 +134,7 @@
 #define FILAMENTCHANGE_Z_ADD  2
 #define FILAMENTCHANGE_REHOME 1
 #define FILAMENTCHANGE_SHORTRETRACT 5
-#define FILAMENTCHANGE_LONGRETRACT 50
+#define FILAMENTCHANGE_LONGRETRACT 700
 #define JAM_STEPS 220
 #define JAM_SLOWDOWN_STEPS 320
 #define JAM_SLOWDOWN_TO 70
@@ -389,7 +389,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ECHO_ON_EXECUTE 1
 #define EEPROM_MODE 1
 #undef PS_ON_PIN
-#define PS_ON_PIN ORIG_PS_ON_PIN
+#define PS_ON_PIN -1
 #define JSON_OUTPUT 0
 
 /* ======== Servos =======
@@ -454,7 +454,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define BENDING_CORRECTION_A 0
 #define BENDING_CORRECTION_B 0
 #define BENDING_CORRECTION_C 0
-#define FEATURE_AXISCOMP 0
+#define FEATURE_AXISCOMP 1
 #define AXISCOMP_TANXY 0
 #define AXISCOMP_TANYZ 0
 #define AXISCOMP_TANXZ 0
@@ -554,11 +554,11 @@ Values must be in range 1..255
     "extruder": [
         {
             "id": 0,
-            "heatManager": 3,
+            "heatManager": 1,
             "pidDriveMin": 40,
             "pidDriveMax": 230,
             "pidMax": 255,
-            "sensorType": 14,
+            "sensorType": 1,
             "sensorPin": "TEMP_0_PIN",
             "heaterPin": "HEATER_0_PIN",
             "maxFeedrate": 50,
@@ -577,7 +577,7 @@ Values must be in range 1..255
             "waitRetract": 0,
             "stepsPerMM": 145,
             "coolerPin": "ORIG_FAN_PIN",
-            "coolerSpeed": 255,
+            "coolerSpeed": 200,
             "selectCommands": "",
             "deselectCommands": "",
             "xOffset": 0,
@@ -894,11 +894,11 @@ Values must be in range 1..255
     "babystepMultiplicator": 1,
     "pdmForHeater": "0",
     "pdmForCooler": "0",
-    "psOn": "ORIG_PS_ON_PIN",
+    "psOn": -1,
     "mixingExtruder": "0",
     "decouplingTestMaxHoldVariance": 20,
     "decouplingTestMinTempRise": 1,
-    "featureAxisComp": "0",
+    "featureAxisComp": "1",
     "axisCompTanXY": 0,
     "axisCompTanXZ": 0,
     "axisCompTanYZ": 0,
@@ -933,7 +933,7 @@ Values must be in range 1..255
     "filamentChangeZAdd": 2,
     "filamentChangeRehome": 1,
     "filamentChangeShortRetract": 5,
-    "filamentChangeLongRetract": 50,
+    "filamentChangeLongRetract": 700,
     "fanKickstart": 200,
     "servo0StartPos": -1,
     "servo1StartPos": -1,
