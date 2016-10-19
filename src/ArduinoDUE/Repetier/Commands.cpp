@@ -2368,7 +2368,11 @@ break;
 		case 920:
 		       // S I2C-port is needed, else ignore
 		       if(com->hasString()) {
+		    	   if (Printer::debugErrors()) {
+		    		   Com::printF(PSTR("Sending to fsr: "), com->text);
+		    	   }
 		          FSR::i2cSendString( com->text);
+
 		       } else {
 		    	  Com::printF(PSTR("no FSR Board command found"));
 		       }

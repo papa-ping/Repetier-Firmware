@@ -37,22 +37,22 @@ void FSR::i2cSendString( char *gcode) {
     HAL::i2cWrite(0);
 
     HAL::i2cStop();
-
-    // Awaiting at least a 0-Byte for no feedback.
-    HAL::i2cStart(FSR_I2C_PORT  << 1 | I2C_READ);
-
-    uint8 c = HAL::i2cReadAck();
-
-    while(c != 0) {
-    	// Write out on Serial device
-    	HAL::serialWriteByte(c);
-
-    	// read next byte
-    	c = HAL::i2cReadNak();
-
-    }
-
-    HAL::i2cStop();
+//
+//    // Awaiting at least a 0-Byte for no feedback.
+//    HAL::i2cStart(FSR_I2C_PORT  << 1 | I2C_READ);
+//
+//    uint8 c = HAL::i2cReadAck();
+//
+//    while(c != 0) {
+//    	// Write out on Serial device
+//    	HAL::serialWriteByte(c);
+//
+//    	// read next byte
+//    	c = HAL::i2cReadNak();
+//
+//    }
+//
+//    HAL::i2cStop();
 
 }
 
