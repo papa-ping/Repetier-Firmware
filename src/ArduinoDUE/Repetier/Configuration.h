@@ -47,7 +47,7 @@
 #undef FAN_PIN
 #define FAN_PIN ORIG_FAN2_PIN
 #undef FAN_BOARD_PIN
-#define FAN_BOARD_PIN -1
+#define FAN_BOARD_PIN HEATER_3_PIN
 #define BOARD_FAN_SPEED 128
 #define FAN_THERMO_PIN -1
 #define FAN_THERMO_MIN_PWM 128
@@ -56,6 +56,22 @@
 #define FAN_THERMO_MAX_TEMP 60
 #define FAN_THERMO_THERMISTOR_PIN -1
 #define FAN_THERMO_THERMISTOR_TYPE 1
+#undef X_MAX_PIN
+#define X_MAX_PIN ORIG_Y_MAX_PIN
+#undef Y_MAX_PIN
+#define Y_MAX_PIN ORIG_X_MAX_PIN
+#undef X_STEP_PIN
+#define X_STEP_PIN ORIG_Y_STEP_PIN
+#undef X_DIR_PIN
+#define X_DIR_PIN ORIG_Y_DIR_PIN
+#undef X_ENABLE_PIN
+#define X_ENABLE_PIN ORIG_Y_ENABLE_PIN
+#undef Y_STEP_PIN
+#define Y_STEP_PIN ORIG_X_STEP_PIN
+#undef Y_DIR_PIN
+#define Y_DIR_PIN ORIG_X_DIR_PIN
+#undef Y_ENABLE_PIN
+#define Y_ENABLE_PIN ORIG_X_ENABLE_PIN
 
 //#define EXTERNALSERIAL  use Arduino serial library instead of build in. Requires more ram, has only 63 byte input buffer.
 // Uncomment the following line if you are using Arduino compatible firmware made for Arduino version earlier then 1.0
@@ -83,7 +99,7 @@
 #define EXT0_Y_OFFSET 0
 #define EXT0_Z_OFFSET 0
 #define EXT0_STEPS_PER_MM 145
-#define EXT0_TEMPSENSOR_TYPE 1
+#define EXT0_TEMPSENSOR_TYPE 8
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 #define EXT0_HEATER_PIN HEATER_0_PIN
 #define EXT0_STEP_PIN ORIG_E0_STEP_PIN
@@ -240,10 +256,10 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ENDSTOP_PULLUP_Z_MIN false
 #define ENDSTOP_Z_MIN_INVERTING false
 #define MIN_HARDWARE_ENDSTOP_Z true
-#define ENDSTOP_PULLUP_X_MAX false
+#define ENDSTOP_PULLUP_X_MAX true
 #define ENDSTOP_X_MAX_INVERTING false
 #define MAX_HARDWARE_ENDSTOP_X true
-#define ENDSTOP_PULLUP_Y_MAX true
+#define ENDSTOP_PULLUP_Y_MAX false
 #define ENDSTOP_Y_MAX_INVERTING false
 #define MAX_HARDWARE_ENDSTOP_Y true
 #define ENDSTOP_PULLUP_Z_MAX true
@@ -279,29 +295,29 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISABLE_E 0
 #define PREVENT_Z_DISABLE_ON_STEPPER_TIMEOUT
 #define INVERT_X_DIR 0
-#define INVERT_Y_DIR 0
+#define INVERT_Y_DIR 1
 #define INVERT_Z_DIR 0
 #define X_HOME_DIR 1
 #define Y_HOME_DIR 1
 #define Z_HOME_DIR 1
 #define X_MAX_LENGTH 290
-#define Y_MAX_LENGTH 320
+#define Y_MAX_LENGTH 290
 #define Z_MAX_LENGTH 202
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define DISTORTION_CORRECTION 0
-#define DISTORTION_CORRECTION_POINTS 5
+#define DISTORTION_CORRECTION 1
+#define DISTORTION_CORRECTION_POINTS 3
 #define DISTORTION_CORRECTION_R 100
 #define DISTORTION_PERMANENT 1
 #define DISTORTION_UPDATE_FREQUENCY 15
 #define DISTORTION_START_DEGRADE 0.5
 #define DISTORTION_END_HEIGHT 1
 #define DISTORTION_EXTRAPOLATE_CORNERS 0
-#define DISTORTION_XMIN 10
-#define DISTORTION_YMIN 10
-#define DISTORTION_XMAX 190
-#define DISTORTION_YMAX 190
+#define DISTORTION_XMIN 2
+#define DISTORTION_YMIN 28
+#define DISTORTION_XMAX 290
+#define DISTORTION_YMAX 268
 
 // ##########################################################################################
 // ##                           Movement settings                                          ##
@@ -326,7 +342,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define HOMING_FEEDRATE_X 40
 #define HOMING_FEEDRATE_Y 40
 #define HOMING_FEEDRATE_Z 10
-#define HOMING_ORDER HOME_ORDER_YXZ
+#define HOMING_ORDER HOME_ORDER_XYZ
 #define ZHOME_MIN_TEMPERATURE 0
 #define ZHOME_HEAT_ALL 1
 #define ZHOME_HEAT_HEIGHT 20
@@ -435,15 +451,15 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define Z_PROBE_REQUIRES_HEATING 0
 #define Z_PROBE_MIN_TEMPERATURE 150
 #define FEATURE_AUTOLEVEL 1
-#define Z_PROBE_X1 20
-#define Z_PROBE_Y1 20
-#define Z_PROBE_X2 160
-#define Z_PROBE_Y2 20
-#define Z_PROBE_X3 100
-#define Z_PROBE_Y3 160
+#define Z_PROBE_X1 280000
+#define Z_PROBE_Y1 275000
+#define Z_PROBE_X2 280000
+#define Z_PROBE_Y2 37000
+#define Z_PROBE_X3 20
+#define Z_PROBE_Y3 37000
 #define BED_LEVELING_METHOD 0
 #define BED_CORRECTION_METHOD 0
-#define BED_LEVELING_GRID_SIZE 5
+#define BED_LEVELING_GRID_SIZE 3
 #define BED_LEVELING_REPETITIONS 5
 #define BED_MOTOR_1_X 0
 #define BED_MOTOR_1_Y 0
@@ -547,7 +563,7 @@ Values must be in range 1..255
     "xInvert": "0",
     "xInvertEnable": 0,
     "eepromMode": 1,
-    "yInvert": "0",
+    "yInvert": "1",
     "yInvertEnable": 0,
     "zInvert": 0,
     "zInvertEnable": 0,
@@ -558,7 +574,7 @@ Values must be in range 1..255
             "pidDriveMin": 40,
             "pidDriveMax": 230,
             "pidMax": 255,
-            "sensorType": 1,
+            "sensorType": 8,
             "sensorPin": "TEMP_0_PIN",
             "heaterPin": "HEATER_0_PIN",
             "maxFeedrate": 50,
@@ -611,8 +627,8 @@ Values must be in range 1..255
     "xMinEndstop": 0,
     "yMinEndstop": 0,
     "zMinEndstop": 4,
-    "xMaxEndstop": 4,
-    "yMaxEndstop": 2,
+    "xMaxEndstop": 2,
+    "yMaxEndstop": 4,
     "zMaxEndstop": 1,
     "motherboard": 402,
     "driveSystem": 1,
@@ -629,16 +645,16 @@ Values must be in range 1..255
     "zTravelAcceleration": 100,
     "zPrintAcceleration": 100,
     "xMotor": {
-        "name": "X motor",
-        "step": "ORIG_X_STEP_PIN",
-        "dir": "ORIG_X_DIR_PIN",
-        "enable": "ORIG_X_ENABLE_PIN"
-    },
-    "yMotor": {
         "name": "Y motor",
         "step": "ORIG_Y_STEP_PIN",
         "dir": "ORIG_Y_DIR_PIN",
         "enable": "ORIG_Y_ENABLE_PIN"
+    },
+    "yMotor": {
+        "name": "X motor",
+        "step": "ORIG_X_STEP_PIN",
+        "dir": "ORIG_X_DIR_PIN",
+        "enable": "ORIG_X_ENABLE_PIN"
     },
     "zMotor": {
         "name": "Z motor",
@@ -656,7 +672,7 @@ Values must be in range 1..255
     "yMinPos": 0,
     "zMinPos": 0,
     "xLength": 290,
-    "yLength": 320,
+    "yLength": 290,
     "zLength": 202,
     "alwaysCheckEndstops": "0",
     "disableX": "0",
@@ -744,7 +760,7 @@ Values must be in range 1..255
     "hasHeatedBed": "1",
     "enableZProbing": "1",
     "extrudeMaxLength": 160,
-    "homeOrder": "HOME_ORDER_YXZ",
+    "homeOrder": "HOME_ORDER_XYZ",
     "featureController": 19,
     "uiPrinterName": "PiepPiep",
     "uiPrinterCompany": "Home made",
@@ -863,12 +879,12 @@ Values must be in range 1..255
     "zProbeStartScript": "",
     "zProbeFinishedScript": "",
     "featureAutolevel": "1",
-    "zProbeX1": 20,
-    "zProbeY1": 20,
-    "zProbeX2": 160,
-    "zProbeY2": 20,
-    "zProbeX3": 100,
-    "zProbeY3": 160,
+    "zProbeX1": 280000,
+    "zProbeY1": 275000,
+    "zProbeX2": 280000,
+    "zProbeY2": 37000,
+    "zProbeX3": 20,
+    "zProbeY3": 37000,
     "zProbeSwitchingDistance": 1,
     "zProbeRepetitions": 1,
     "sdSupport": "0",
@@ -884,11 +900,11 @@ Values must be in range 1..255
     "xMinPin": "ORIG_X_MIN_PIN",
     "yMinPin": "ORIG_Y_MIN_PIN",
     "zMinPin": "ORIG_Z_MIN_PIN",
-    "xMaxPin": "ORIG_X_MAX_PIN",
-    "yMaxPin": "ORIG_Y_MAX_PIN",
+    "xMaxPin": "ORIG_Y_MAX_PIN",
+    "yMaxPin": "ORIG_X_MAX_PIN",
     "zMaxPin": "ORIG_Z_MAX_PIN",
     "deltaHomeOnPower": "0",
-    "fanBoardPin": -1,
+    "fanBoardPin": "HEATER_3_PIN",
     "heaterPWMSpeed": 0,
     "featureBabystepping": "1",
     "babystepMultiplicator": 1,
@@ -905,18 +921,18 @@ Values must be in range 1..255
     "retractOnPause": 2,
     "pauseStartCommands": "",
     "pauseEndCommands": "",
-    "distortionCorrection": "0",
-    "distortionCorrectionPoints": 5,
+    "distortionCorrection": "1",
+    "distortionCorrectionPoints": 3,
     "distortionCorrectionR": 100,
     "distortionPermanent": "1",
     "distortionUpdateFrequency": 15,
     "distortionStartDegrade": 0.5,
     "distortionEndDegrade": 1,
     "distortionExtrapolateCorners": "0",
-    "distortionXMin": 10,
-    "distortionXMax": 190,
-    "distortionYMin": 10,
-    "distortionYMax": 190,
+    "distortionXMin": 2,
+    "distortionXMax": 290,
+    "distortionYMin": 28,
+    "distortionYMax": 268,
     "sdRunOnStop": "",
     "sdStopHeaterMotorsOnStop": "1",
     "featureRetraction": "1",
@@ -1060,7 +1076,7 @@ Values must be in range 1..255
     "jsonOutput": "0",
     "bedLevelingMethod": 0,
     "bedCorrectionMethod": 0,
-    "bedLevelingGridSize": 5,
+    "bedLevelingGridSize": 3,
     "bedLevelingRepetitions": 5,
     "bedMotor1X": 0,
     "bedMotor1Y": 0,
