@@ -2369,12 +2369,12 @@ break;
 		       // S I2C-port is needed, else ignore
 		       if(com->hasString()) {
 		    	   if (Printer::debugErrors()) {
-		    		   Com::printF(PSTR("Sending to fsr: "), com->text);
+		    		   Com::printFLN(PSTR("Sending to fsr: "), com->text);
 		    	   }
 		          FSR::i2cSendString( com->text);
 
 		       } else {
-		    	  Com::printF(PSTR("no FSR Board command found"));
+		    	  Com::printFLN(PSTR("no FSR Board command found"));
 		       }
 		       break;
 		case 999: // Stop fatal error take down
