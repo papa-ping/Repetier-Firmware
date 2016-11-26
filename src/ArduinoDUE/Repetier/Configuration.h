@@ -293,7 +293,6 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISABLE_Y 0
 #define DISABLE_Z 0
 #define DISABLE_E 0
-#define PREVENT_Z_DISABLE_ON_STEPPER_TIMEOUT
 #define INVERT_X_DIR 0
 #define INVERT_Y_DIR 1
 #define INVERT_Z_DIR 0
@@ -355,7 +354,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define RAMP_ACCELERATION 1
 #define STEPPER_HIGH_DELAY 0
 #define DIRECTION_DELAY 0
-#define STEP_DOUBLER_FREQUENCY 80000
+#define STEP_DOUBLER_FREQUENCY 200000
 #define ALLOW_QUADSTEPPING 1
 #define DOUBLE_STEP_DELAY 0 // time in microseconds
 #define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_X 1000
@@ -470,7 +469,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define BENDING_CORRECTION_A 0
 #define BENDING_CORRECTION_B 0
 #define BENDING_CORRECTION_C 0
-#define FEATURE_AXISCOMP 1
+#define FEATURE_AXISCOMP 0
 #define AXISCOMP_TANXY 0
 #define AXISCOMP_TANYZ 0
 #define AXISCOMP_TANXZ 0
@@ -706,7 +705,7 @@ Values must be in range 1..255
     "deltaSegmentsPerLine": 24,
     "stepperHighDelay": 0,
     "directionDelay": 0,
-    "stepDoublerFrequency": 80000,
+    "stepDoublerFrequency": 200000,
     "allowQuadstepping": "1",
     "doubleStepDelay": 0,
     "maxJerk": 20,
@@ -914,7 +913,7 @@ Values must be in range 1..255
     "mixingExtruder": "0",
     "decouplingTestMaxHoldVariance": 20,
     "decouplingTestMinTempRise": 1,
-    "featureAxisComp": "1",
+    "featureAxisComp": "0",
     "axisCompTanXY": 0,
     "axisCompTanXZ": 0,
     "axisCompTanYZ": 0,
@@ -1060,7 +1059,7 @@ Values must be in range 1..255
     "bendingCorrectionA": 0,
     "bendingCorrectionB": 0,
     "bendingCorrectionC": 0,
-    "preventZDisableOnStepperTimeout": "1",
+    "preventZDisableOnStepperTimeout": "0",
     "supportLaser": "0",
     "laserPin": -1,
     "laserOnHigh": "1",
