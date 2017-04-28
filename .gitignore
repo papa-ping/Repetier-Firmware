@@ -31,3 +31,5 @@ src/Repetier-Atmel7/*
 src/ArduinoDUE/Repetier.zip
 src/ArduinoAVR/Repetier.zip
 src/ArduinoDUE/Repetier/Configuration.h
+
+*.png
